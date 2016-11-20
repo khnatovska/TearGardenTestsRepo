@@ -13,13 +13,13 @@ using StartSel;
 
 namespace TearGarden.Tests
 {
-    [TestFixture]
+    //[TestFixture]
     public class Repository
     {
         private IWebDriver driver;
         private WebDriverWait wait;
 
-        [SetUp]
+        //[OneTimeSetUp]
         public void RepositoryTestSetup()
         {
             //ChromeDriver WITH OVERLAY WIDGET BUG
@@ -33,7 +33,7 @@ namespace TearGarden.Tests
             Root.NavigateToRepositoriesPage(driver);
         }
 
-        [Test]
+        //[Test]
         public void LaunchDVMAddNewRepositoryDialog() //start: repositories page. find Add New Repo button, verify title, open add repo dialog, verify title
         {
             IWebElement addNewRepoBtn = wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("#newMainRepository > span")));
@@ -43,8 +43,8 @@ namespace TearGarden.Tests
             IWebElement addNewRepoDialogTitle = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("ui-id-3")));
             Assert.AreEqual(addNewRepoDialogTitle.Text, "Add New Repository");
         }
-        
-        [Test]
+
+        //[Test]
         public void CloseDVMAddNewRepositoryDialog() //start: repositories page. open add repo dialog, close with button, reopen dialog, close with cross icon
         {
             LaunchDVMAddNewRepositoryDialog();
@@ -53,14 +53,14 @@ namespace TearGarden.Tests
             cancelButton.Click();
             var dialogClosed = wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.Id("ui-id-3")));
             Assert.IsTrue(dialogClosed);
-            LaunchDVMAddNewRepositoryDialog();
-            IWebElement cancelIcon = wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("div.ui-dialog-titlebar span.ui-icon-closeright")));
-            cancelIcon.Click();
-            dialogClosed = wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.Id("ui-id-3")));
-            Assert.IsTrue(dialogClosed);
+            //LaunchDVMAddNewRepositoryDialog();
+            //IWebElement cancelIcon = wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("div.ui-dialog-titlebar span.ui-icon-closeright")));
+            //cancelIcon.Click();
+            //dialogClosed = wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.Id("ui-id-3")));
+            //Assert.IsTrue(dialogClosed);
         }
 
-        [Test]
+        //[Test]
         public void CreateDVMRepoWithoutStorageLocation() //start: add new DVM repo dialog. find create repo button, click, verify warning message, close warning dialog
         {
             LaunchDVMAddNewRepositoryDialog();
@@ -74,7 +74,7 @@ namespace TearGarden.Tests
             closeBtn.Click();
         }
 
-        [Test]
+        //[Test]
         public void CreareDVMRepoWithEmptyName() //start: add new DVM repo dialog. find name, verify label. clear, click create button, vefiry validation
         {
             LaunchDVMAddNewRepositoryDialog();
@@ -90,7 +90,7 @@ namespace TearGarden.Tests
             Assert.IsTrue(repoNameLabelParent.HasClass("has-error"));
         }
 
-        [Test]
+        //[Test]
         public void CreareDVMRepoWithInvalidName() //start: add new DVM repo dialog. find name. loop - incorrect value, click create button, vefiry validation
         {
             LaunchDVMAddNewRepositoryDialog();
@@ -115,7 +115,7 @@ namespace TearGarden.Tests
             Assert.AreEqual(repoName.GetAttribute("value").Length, 40);
         }
 
-        [Test]
+        //[Test]
         public void CreareDVMRepoWithEmptyConcurOperations() //start: add new DVM repo dialog. find concurrent operations. clear, click create button, vefiry validation
         {
             LaunchDVMAddNewRepositoryDialog();
@@ -132,7 +132,7 @@ namespace TearGarden.Tests
             Assert.IsTrue(concurOperationsLabelParent.HasClass("has-error"));
         }
 
-        [Test]
+        //[Test]
         public void CreareDVMRepoWithInvalidConcurOperations() //start: add new DVM repo dialog. find concurrent operations. loop - incorect value, click create button, vefiry validation
         {
             LaunchDVMAddNewRepositoryDialog();
@@ -153,7 +153,7 @@ namespace TearGarden.Tests
             }
         }
 
-        [Test]
+        //[Test]
         public void LaunchAddStorageLocationDialog() //start: add new DVM repo dialog. find add storage location button, verify title, click, verify dialog title
         {
             LaunchDVMAddNewRepositoryDialog();
@@ -162,9 +162,10 @@ namespace TearGarden.Tests
             addStorageLocationBtn.Click();
             IWebElement addStorageLocationDialogTitle = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("ui-id-4")));
             Assert.AreEqual(addStorageLocationDialogTitle.Text, "Add Storage Location");
+            
         }
 
-        [Test]
+        //[Test]
         public void SaveStorageLocationWithEmptyLocalPath() //start: add storage location dialog. verify local path radio and labels, find save button, click, verify validation
         {
             LaunchDVMAddNewRepositoryDialog();
@@ -186,7 +187,7 @@ namespace TearGarden.Tests
             Assert.IsTrue(metadataPathLabelParent.HasClass("has-error"));
         }
 
-        [Test]
+        //[Test]
         public void SaveStorageLocationWithInvalidLocalPath() //start: add storage location dialog. verify local radio, loop - enter invalid values and check validation for data and metadata
         {
             //THIS IS INEFFICIENT MAKE IT BETTER
@@ -224,7 +225,7 @@ namespace TearGarden.Tests
             }
         }
 
-        [Test]
+        //[Test]
         public void SaveStorageLocationWithEmptySharedPath() //start: add storage location dialog. select shared path radio, verify labels, find save button, click, verify validation
         {
             LaunchDVMAddNewRepositoryDialog();
@@ -252,7 +253,7 @@ namespace TearGarden.Tests
             Assert.IsTrue(passwordLabelParent.HasClass("has-error"));
         }
 
-        [Test]
+        //[Test]
         public void SaveStorageLocationWithInvalidSharedPath() //start: add storage location dialog. select shared path radio, loop - enter invalid values for shared path and check validation for path
         {
             //THIS IS INEFFICIENT MAKE IT BETTER
@@ -281,7 +282,7 @@ namespace TearGarden.Tests
             }
         }
 
-        [Test]
+        //[Test]
         public void SaveStorageLocationWithInvalidSharedPathUserName() //start: add storage location dialog. select shared path radio, loop - enter invalid values for user of shared path and check validation for name
         {
             LaunchDVMAddNewRepositoryDialog();
@@ -304,7 +305,7 @@ namespace TearGarden.Tests
             Assert.AreEqual(userName.GetAttribute("value").Length, 254);
         }
 
-        [Test]
+       // [Test]
         public void SaveStorageLocationWithInvalidSharedPathPassword() //start: add storage location dialog. select shared path radio, enter invalid (too log) password for shared path and check validation for password
         {
             LaunchDVMAddNewRepositoryDialog();
@@ -322,7 +323,7 @@ namespace TearGarden.Tests
             Assert.AreEqual(password.GetAttribute("value").Length, 104);
         }
 
-        [Test]
+        //[Test]
         public void AddStorageLocationChangeSize() //start: add storage location dialog. verify size units in dropdown, select them, change size with arrows, enter size
         {
             LaunchDVMAddNewRepositoryDialog();
@@ -354,7 +355,7 @@ namespace TearGarden.Tests
             Assert.AreEqual(size.GetAttribute("value"), "0.00");
         }
 
-        [Test]
+        //[Test]
         public void SaveStorageLocationWithEmptySize() //start: add storage location dialog. add local path. remove size, click save, verify validation
         {
             LaunchDVMAddNewRepositoryDialog();
@@ -377,7 +378,7 @@ namespace TearGarden.Tests
 
         //}
 
-        [TearDown]
+        //[OneTimeTearDown]
         public void RepositoryTestTearDown()
         {
             Root.QuitCore(driver);

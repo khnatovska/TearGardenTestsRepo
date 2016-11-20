@@ -22,7 +22,7 @@ namespace StartSel
             webdriver.WaitForAjax();
             Assert.IsTrue(inputField.HasClass(inputFieldClass)); //IS IT RELIABLE - CHECK CLASS AND NOT ACTUAL STYLE? HOW TO CHECK ACTUAL STYLE? NO WAY TO CHECK TOOLTIP
             Assert.IsTrue(labelParent.HasClass(labelParentClass));
-            inputField.Clear();
+            //inputField.Clear();
         }
 
         public static void VerifyInputFieldValidation(IWebDriver webdriver, IWebElement inputField, IWebElement labelParent, string invalidValue,
