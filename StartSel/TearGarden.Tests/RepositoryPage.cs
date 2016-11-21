@@ -284,5 +284,83 @@ namespace TearGarden.Tests
             password.SendKeys(new String('q', 105));
             Assert.AreEqual(password.GetAttribute("value").Length, 104);
         }
+
+        [Test]
+        [Category("atAddStorageLocationDialog")]
+        public void ChangeStorageLocationSizeUnit()
+        {
+            IWebElement sizeUnit = driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSizeUnitSelectBtn));
+            Assert.AreEqual(driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSizeUnitDefaultValue)).Text, "GB");
+            sizeUnit.Click();
+            wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(CssSelestors.addStorageLocationDialogSizeUnitDropdown)));
+            Assert.AreEqual(driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSizeUnitDropdownOption1)).Text, "GB");
+            Assert.AreEqual(driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSizeUnitDropdownOption2)).Text, "TB");
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSizeUnitDropdownOption2)).Click();
+            driver.WaitForAjax();
+            Assert.AreEqual(driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSizeUnitDefaultValue)).Text, "TB");
+        }
+
+        [Test]
+        [Category("atAddStorageLocationDialog")]
+        public void ChangeStorageLocationSize()
+        {
+            IWebElement size = driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize));
+            Assert.AreEqual(size.GetAttribute("value"), "250.00");
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSizeControlArrowUp)).Click();
+            Assert.AreEqual(size.GetAttribute("value"), "250.01");
+            size.Clear();
+            size.SendKeys("100");
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSizeControlArrowDown)).Click();
+            Assert.AreEqual(size.GetAttribute("value"), "99.99");
+            size.Clear();
+            size.SendKeys("0");
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSizeControlArrowDown)).Click();
+            Assert.AreEqual(size.GetAttribute("value"), "0.00");
+        }
+
+        [Test]
+        [Category("atAddStorageLocationDialog")]
+        public void SaveStorageLocationWithEmptySize()
+        {
+            IWebElement size = driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize));
+            IWebElement saveBtn = driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSaveBtn));
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogDataPath)).SendKeys(Root.localRepoPath);
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogMetadataPath)).SendKeys(Root.localRepoPath);
+            size.Clear();
+            saveBtn.Click();
+            driver.WaitForAjax();
+            Assert.IsTrue(size.HasClass("input-validation-error"));
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSizeUnitSelectBtn)).Click();
+            wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(CssSelestors.addStorageLocationDialogSizeUnitDropdown)));
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSizeUnitDropdownOption2)).Click();
+            driver.WaitForAjax();
+            saveBtn.Click();
+            driver.WaitForAjax();
+            Assert.IsTrue(size.HasClass("input-validation-error"));
+        }
+
+        [TestCaseSource(typeof(Root), "invalidStorageLocationSizeGB")]
+        [Category("atAddStorageLocationDialog")]
+        public void SaveStorageLocationSizeInvalidValueGB(string invalidValue)
+        {
+            IWebElement size = driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize));
+            IWebElement sizeParent = size.FindElement(By.XPath("../../.."));
+            size.Clear();
+            Verifier.VerifyInputFieldValidation(driver, size, sizeParent, invalidValue, "input-validation-error", "has-error");
+        }
+
+        [TestCaseSource(typeof(Root), "invalidStorageLocationSizeTB")]
+        [Category("atAddStorageLocationDialog")]
+        public void SaveStorageLocationSizeInvalidValueTB(string invalidValue)
+        {
+            IWebElement size = driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize));
+            IWebElement sizeParent = size.FindElement(By.XPath("../../.."));
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSizeUnitSelectBtn)).Click();
+            wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(CssSelestors.addStorageLocationDialogSizeUnitDropdown)));
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSizeUnitDropdownOption2)).Click();
+            driver.WaitForAjax();
+            size.Clear();
+            Verifier.VerifyInputFieldValidation(driver, size, sizeParent, invalidValue, "input-validation-error", "has-error");
+        }
     }
 }

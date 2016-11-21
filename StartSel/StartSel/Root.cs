@@ -28,10 +28,12 @@ namespace StartSel
             "\\\\hostname\\lpt8", "\\\\host name\\lpt9", "\\\\host?name\\fo", "\\\\host|name\\fo", "\\\\host:name\\fo", "\\\\host/name\\fo", "\\\\host>name\\fo",
             "\\\\host<name\\fo", "\\\\host\"name\\fo", "\\\\host*name\\fo", "\\\\host\\\\name\\fo", " \\\\hostname\\fo", "\\\\hostname\\ ", "\\\\ \\fo" };
         public static readonly List<string> invalidUserNames = new List<string> { "\"", "/", "[", "]", ":", ";", "|", "=", ",", "+", "*", "?", "<", ">" };
+        public static readonly List<string> invalidStorageLocationSizeGB = new List<string> { "0.1", "9999000", "q", "-15" };
+        public static readonly List<string> invalidStorageLocationSizeTB = new List<string> { "0.001", "9999.01", "q", "-15" };
         public static string coreIP { get; } = "10.35.178.196";
         public static string coreUsername { get; } = "administrator";
         public static string corePassword { get; } = "123asdQ";
-        public static string localRepoPath { get; } = "J:\repo";
+        public static string localRepoPath { get; } = "J:\\repo";
         public static string firefoxProfileName { get; } = "teargarden";
 
         public static void OpenCoreAdmin(IWebDriver webdriver)

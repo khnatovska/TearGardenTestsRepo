@@ -31,7 +31,14 @@ namespace StartSel
         public static string addStorageLocationDialogUsername = "#FileSpecNetworkUserName";
         public static string addStorageLocationDialogPasswordLabel = "label.control-label[for=\"NetworkPassword\"";
         public static string addStorageLocationDialogPassword = "#FileSpecNetworkPassword";
-
+        public static string addStorageLocationDialogSize = "#FileSpecSize";
+        public static string addStorageLocationDialogSizeControlArrowUp = "#popup2 button.bootstrap-touchspin-up";
+        public static string addStorageLocationDialogSizeControlArrowDown = "#popup2 button.bootstrap-touchspin-down";
+        public static string addStorageLocationDialogSizeUnitSelectBtn = "#dropdown-wrapper-FileSpecSizeUnit > span.dropdown-multiselect-button";
+        public static string addStorageLocationDialogSizeUnitDefaultValue = "#dropdown-wrapper-FileSpecSizeUnit span.dropdown-inner-text.cutText";
+        public static string addStorageLocationDialogSizeUnitDropdown = "#dropdown-visual-input-FileSpecSizeUnit";
+        public static string addStorageLocationDialogSizeUnitDropdownOption1 = "#dropdown-menu-FileSpecSizeUnit > ul > li:nth-child(1) > label";
+        public static string addStorageLocationDialogSizeUnitDropdownOption2 = "#dropdown-menu-FileSpecSizeUnit > ul > li:nth-child(2) > label";
 
 
         public static string uiDialogLevelOneTitle = "#ui-id-3";
