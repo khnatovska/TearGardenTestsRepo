@@ -18,6 +18,207 @@ namespace TearGarden.Tests
     {
         private IWebDriver driver;
         private WebDriverWait wait;
+
+        [OneTimeSetUp]
+        public void AddNewRepositoryDialogSetupOnetime()
+        {
+            driver = TestConfig.RepositoryTestSetup();
+            wait = Root.SetUptWebDriverWait(driver);
+        }
+
+        [OneTimeTearDown]
+        public void AddNewRepositoryDialogTeardownOneTime()
+        {
+            TestConfig.RepositoryTestTearDown();
+        }
+
+        [TearDown]
+        public void RepositoryPageTeardown()
+        {
+            driver.Navigate().Refresh();
+            driver.WaitForPageToLoad();
+        }
+
+        [Test]
+        [Category("atRepositoryPage")]
+        public void SaveValidLocalStorageLocation()
+        {
+            //open addStorageLocationDialog
+            Assert.AreEqual(driver.FindElement(By.CssSelector(CssSelestors.addNewRepositoryBtnText)).Text, "Add New DVM Repository");
+            driver.FindElement(By.CssSelector(CssSelestors.addNewRepositoryBtn)).Click();
+            IWebElement uiDialogLevelOneTitle = wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(CssSelestors.uiDialogLevelOneTitle)));
+            Assert.AreEqual(uiDialogLevelOneTitle.Text, "Add New Repository");
+            IWebElement addStorageLocationBtn = driver.FindElement(By.CssSelector(CssSelestors.addNewRepositoryDialogAddStorageLocationBtn));
+            Assert.AreEqual(addStorageLocationBtn.Text, "Add Storage Location");
+            addStorageLocationBtn.Click();
+            IWebElement addStorageLocationDialogTitle = wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(CssSelestors.uiDialogLevelTwoTitle)));
+            Assert.AreEqual(addStorageLocationDialogTitle.Text, "Add Storage Location");
+
+            string metadataPath = Root.localRepoPath + "meta";
+            string storageLocationSize = "300";
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogDataPath)).SendKeys(Root.localRepoPath);
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogMetadataPath)).Click();
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogMetadataPath)).SendKeys(metadataPath);
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize)).Clear();
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize)).SendKeys(storageLocationSize);
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize)).SendKeys(Keys.Tab);
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSaveBtn)).Click();
+            Assert.IsTrue(wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.CssSelector(CssSelestors.uiDialogLevelTwoTitle))));
+            driver.WaitForAjax();
+            string storageLocationId =
+                driver.FindElement(By.CssSelector(CssSelestors.addNewRepositoryDialogStorageLocationsTableRowOne))
+                    .GetAttribute("id");
+            string dataPathCellContent =
+                driver.FindElement(
+                    By.CssSelector(
+                        storageLocationId.IntoDynamicSelector(
+                            CssSelestors.addNewRepositoryDialogStorageLocationsTableDataPathCell_part))).Text;
+            string metadataPathCellContent =
+                driver.FindElement(
+                    By.CssSelector(
+                        storageLocationId.IntoDynamicSelector(
+                            CssSelestors.addNewRepositoryDialogStorageLocationsTableMetadataPathCell_part))).Text;
+            string sizeCellContent =
+                driver.FindElement(
+                    By.CssSelector(
+                        storageLocationId.IntoDynamicSelector(
+                            CssSelestors.addNewRepositoryDialogStorageLocationsTableSizeCell_part))).Text;
+            Assert.AreEqual(dataPathCellContent, Root.localRepoPath);
+            Assert.AreEqual(metadataPathCellContent, metadataPath);
+            Assert.AreEqual(sizeCellContent, storageLocationSize + " GB");
+        }
+
+        [Test]
+        [Category("atRepositoryPage")]
+        public void SaveValidNetworkStorageLocation()
+        {
+            //open addStorageLocationDialog
+            Assert.AreEqual(driver.FindElement(By.CssSelector(CssSelestors.addNewRepositoryBtnText)).Text, "Add New DVM Repository");
+            driver.FindElement(By.CssSelector(CssSelestors.addNewRepositoryBtn)).Click();
+            IWebElement uiDialogLevelOneTitle = wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(CssSelestors.uiDialogLevelOneTitle)));
+            Assert.AreEqual(uiDialogLevelOneTitle.Text, "Add New Repository");
+            IWebElement addStorageLocationBtn = driver.FindElement(By.CssSelector(CssSelestors.addNewRepositoryDialogAddStorageLocationBtn));
+            Assert.AreEqual(addStorageLocationBtn.Text, "Add Storage Location");
+            addStorageLocationBtn.Click();
+            IWebElement addStorageLocationDialogTitle = wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(CssSelestors.uiDialogLevelTwoTitle)));
+            Assert.AreEqual(addStorageLocationDialogTitle.Text, "Add Storage Location");
+
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSharedPathRadio)).Click();
+            string storageLocationSize = "30";
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUNCPath)).SendKeys(Root.networkRepoPath);
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUsername)).Click();
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUsername)).SendKeys(Root.networkRepoUsername);
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogPassword)).Click();
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogPassword)).SendKeys(Root.networkRepoPassword);
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize)).Clear();
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize)).SendKeys(storageLocationSize);
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize)).SendKeys(Keys.Tab);
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSaveBtn)).Click();
+            Assert.IsTrue(wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.CssSelector(CssSelestors.uiDialogLevelTwoTitle))));
+            driver.WaitForAjax();
+            string storageLocationId =
+                driver.FindElement(By.CssSelector(CssSelestors.addNewRepositoryDialogStorageLocationsTableRowOne))
+                    .GetAttribute("id");
+            string dataPathCellContent =
+                driver.FindElement(
+                    By.CssSelector(
+                        storageLocationId.IntoDynamicSelector(
+                            CssSelestors.addNewRepositoryDialogStorageLocationsTableDataPathCell_part))).Text;
+            string metadataPathCellContent =
+                driver.FindElement(
+                    By.CssSelector(
+                        storageLocationId.IntoDynamicSelector(
+                            CssSelestors.addNewRepositoryDialogStorageLocationsTableMetadataPathCell_part))).Text;
+            string sizeCellContent =
+                driver.FindElement(
+                    By.CssSelector(
+                        storageLocationId.IntoDynamicSelector(
+                            CssSelestors.addNewRepositoryDialogStorageLocationsTableSizeCell_part))).Text;
+            Assert.AreEqual(dataPathCellContent, Root.networkRepoPath);
+            Assert.AreEqual(metadataPathCellContent, Root.networkRepoPath);
+            Assert.AreEqual(sizeCellContent, storageLocationSize + " GB");
+        }
+
+        [Test]
+        [Category("atRepositoryPage")]
+        public void SaveTwoValidStorageLocations()
+        {
+            //open addStorageLocationDialog
+            Assert.AreEqual(driver.FindElement(By.CssSelector(CssSelestors.addNewRepositoryBtnText)).Text, "Add New DVM Repository");
+            driver.FindElement(By.CssSelector(CssSelestors.addNewRepositoryBtn)).Click();
+            IWebElement uiDialogLevelOneTitle = wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(CssSelestors.uiDialogLevelOneTitle)));
+            Assert.AreEqual(uiDialogLevelOneTitle.Text, "Add New Repository");
+            IWebElement addStorageLocationBtn = driver.FindElement(By.CssSelector(CssSelestors.addNewRepositoryDialogAddStorageLocationBtn));
+            Assert.AreEqual(addStorageLocationBtn.Text, "Add Storage Location");
+            addStorageLocationBtn.Click();
+            IWebElement addStorageLocationDialogTitle = wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(CssSelestors.uiDialogLevelTwoTitle)));
+            Assert.AreEqual(addStorageLocationDialogTitle.Text, "Add Storage Location");
+
+            string metadataPath = Root.localRepoPath + "meta";
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogDataPath)).SendKeys(Root.localRepoPath);
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogMetadataPath)).Click();
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogMetadataPath)).SendKeys(metadataPath);
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogMetadataPath)).SendKeys(Keys.Tab);
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSaveBtn)).Click();
+            Assert.IsTrue(wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.CssSelector(CssSelestors.uiDialogLevelTwoTitle))));
+            driver.WaitForAjax();
+            string storageLocationOneId =
+                driver.FindElement(By.CssSelector(CssSelestors.addNewRepositoryDialogStorageLocationsTableRowOne))
+                    .GetAttribute("id");
+            string dataPathCellContentOne =
+                driver.FindElement(
+                    By.CssSelector("#"+
+                        storageLocationOneId+" "+
+                            CssSelestors.addNewRepositoryDialogStorageLocationsTableDataPathCell_part)).Text;
+            string metadataPathCellContentOne =
+                driver.FindElement(
+                    By.CssSelector("#"+
+                        storageLocationOneId+" "+
+                            CssSelestors.addNewRepositoryDialogStorageLocationsTableMetadataPathCell_part)).Text;
+            string sizeCellContentOne =
+                driver.FindElement(
+                    By.CssSelector("#"+
+                        storageLocationOneId+" "+
+                            CssSelestors.addNewRepositoryDialogStorageLocationsTableSizeCell_part)).Text;
+
+            driver.FindElement(By.CssSelector(CssSelestors.addNewRepositoryDialogAddStorageLocationBtn)).Click();
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(CssSelestors.uiDialogLevelTwoTitle)));
+
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogDataPath)).SendKeys(Root.localRepoPath + "2");
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogMetadataPath)).Click();
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogMetadataPath)).SendKeys(metadataPath + "2");
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize)).Clear();
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize)).SendKeys("10");
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize)).SendKeys(Keys.Tab);
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSaveBtn)).Click();
+            Assert.IsTrue(wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.CssSelector(CssSelestors.uiDialogLevelTwoTitle))));
+            driver.WaitForAjax();
+            string storageLocationTwoId =
+                driver.FindElement(By.CssSelector(CssSelestors.addNewRepositoryDialogStorageLocationsTableRowTwo))
+                    .GetAttribute("id");
+            string dataPathCellContentTwo =
+                driver.FindElement(
+                    By.CssSelector("#"+
+                        storageLocationTwoId+" "+
+                            CssSelestors.addNewRepositoryDialogStorageLocationsTableDataPathCell_part)).Text;
+            string metadataPathCellContentTwo =
+                driver.FindElement(
+                    By.CssSelector("#"+
+                        storageLocationTwoId+" "+
+                            CssSelestors.addNewRepositoryDialogStorageLocationsTableMetadataPathCell_part)).Text;
+            string sizeCellContentTwo =
+                driver.FindElement(
+                    By.CssSelector("#"+
+                        storageLocationTwoId+" "+
+                            CssSelestors.addNewRepositoryDialogStorageLocationsTableSizeCell_part)).Text;
+
+            Assert.AreEqual(dataPathCellContentOne, Root.localRepoPath);
+            Assert.AreEqual(metadataPathCellContentOne, metadataPath);
+            Assert.AreEqual(sizeCellContentOne, "250 GB");
+            Assert.AreEqual(dataPathCellContentTwo, Root.localRepoPath + "2");
+            Assert.AreEqual(metadataPathCellContentTwo, metadataPath + "2");
+            Assert.AreEqual(sizeCellContentTwo, "10 GB");
+        }
     }
 
     [TestFixture]
@@ -325,6 +526,7 @@ namespace TearGarden.Tests
             IWebElement size = driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize));
             IWebElement saveBtn = driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSaveBtn));
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogDataPath)).SendKeys(Root.localRepoPath);
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogMetadataPath)).Click();
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogMetadataPath)).SendKeys(Root.localRepoPath);
             size.Clear();
             saveBtn.Click();
@@ -361,6 +563,26 @@ namespace TearGarden.Tests
             driver.WaitForAjax();
             size.Clear();
             Verifier.VerifyInputFieldValidation(driver, size, sizeParent, invalidValue, "input-validation-error", "has-error");
+        }
+
+        [Test]
+        [Category("atAddStorageLocationDialog")]
+        public void StorageConfigurationToggleMoreDetails()
+        {
+            IWebElement detailsToggle =
+                driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogDetailsToggle));
+            Assert.AreEqual(detailsToggle.Text, "More Details");
+            detailsToggle.Click();
+            driver.WaitForAjax();
+            Assert.AreEqual(detailsToggle.Text, "Hide Details");
+            Assert.IsTrue(driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogDetailsCashingPolicyDropdown)).Displayed);
+            Assert.IsTrue(driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogDetailsBytesPerSectorDropdown)).Displayed);
+            Assert.IsTrue(driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogDetailsAvrgBytesPerSector)).Displayed);
+            detailsToggle.Click();
+            driver.WaitForAjax();
+            Assert.IsFalse(driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogDetailsCashingPolicyDropdown)).Displayed);
+            Assert.IsFalse(driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogDetailsBytesPerSectorDropdown)).Displayed);
+            Assert.IsFalse(driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogDetailsAvrgBytesPerSector)).Displayed);
         }
     }
 }

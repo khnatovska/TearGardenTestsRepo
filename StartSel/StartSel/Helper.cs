@@ -30,18 +30,23 @@ namespace StartSel
             }
         }
 
-        public static void WaitForOverlay(this IWebDriver driver, int timeoutSecs = 10, bool throwException = false)
+        public static void WaitForPageToLoad(this IWebDriver driver, int timeoutSecs = 10, bool throwException = false)
         {
             for (var i = 0; i < timeoutSecs; i++)
             {
-                var ajaxIsComplete = (bool)(new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.InvisibilityOfElementLocated(By.CssSelector(".ui-widget-overlay"))));
+                var ajaxIsComplete = (bool)(driver as IJavaScriptExecutor).ExecuteScript("return document.readyState == 'complete'"); //it works? really?
                 if (ajaxIsComplete) return;
                 Thread.Sleep(500);
             }
             if (throwException)
             {
-                throw new Exception("WebDriver timed out waiting for overlay to disappear");
+                throw new Exception("WebDriver timed out waiting for page to load");
             }
+        }
+
+        public static string IntoDynamicSelector(this string id, string selector) //DOES NOT WORK PROPERLY - SHUT ITT DOWN
+        {
+            return "#" + id + " " + selector;
         }
     }
 }

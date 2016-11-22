@@ -17,6 +17,15 @@ namespace StartSel
         public static string addNewRepositoryDialogConcurOperationsLabel = "label.control-label[for=\"MaxConcurrentOperations\"";
         public static string addNewRepositoryDialogConcurOperations = "#MaximumConcurrentOperations";
         public static string addNewRepositoryDialogAddStorageLocationBtn = "#popup1 div.popup-inner-content nav.navbar-actions span";
+        public static string addNewRepositoryDialogStorageLocationsTable = "#fileSpecificationsGrid";
+        public static string addNewRepositoryDialogStorageLocationsTableRowOne = "#fileSpecificationsGrid tr.ui-widget-content";
+        public static string addNewRepositoryDialogStorageLocationsTableRowTwo = "#fileSpecificationsGrid tr.ui-widget-content:nth-child(3)";
+        public static string addNewRepositoryDialogStorageLocationsTableDataPathCell_part =
+            "td[aria-describedby=\"fileSpecificationsGrid_DataPath\"]";
+        public static string addNewRepositoryDialogStorageLocationsTableMetadataPathCell_part =
+            "td[aria-describedby=\"fileSpecificationsGrid_MetadataPath\"]";
+        public static string addNewRepositoryDialogStorageLocationsTableSizeCell_part =
+            "td[aria-describedby=\"fileSpecificationsGrid_SizeString\"]";
         public static string addStorageLocationDialogSaveBtn = "#editFileSpecOK";
         public static string addStorageLocationDialogCancelBtn = "#editFileSpecCancel";
         public static string addStorageLocationDialogLocalPathRadio = "#addOnlocalDisk";
@@ -39,7 +48,10 @@ namespace StartSel
         public static string addStorageLocationDialogSizeUnitDropdown = "#dropdown-visual-input-FileSpecSizeUnit";
         public static string addStorageLocationDialogSizeUnitDropdownOption1 = "#dropdown-menu-FileSpecSizeUnit > ul > li:nth-child(1) > label";
         public static string addStorageLocationDialogSizeUnitDropdownOption2 = "#dropdown-menu-FileSpecSizeUnit > ul > li:nth-child(2) > label";
-
+        public static string addStorageLocationDialogDetailsToggle = "#toggleDetailsLink";
+        public static string addStorageLocationDialogDetailsCashingPolicyDropdown = "#dropdown-visual-input-FileSpecCachingPolicy";
+        public static string addStorageLocationDialogDetailsBytesPerSectorDropdown = "#dropdown-visual-input-FileSpecBytesPerSector";
+        public static string addStorageLocationDialogDetailsAvrgBytesPerSector = "#FileSpecAverageBytesPerRecord";
 
         public static string uiDialogLevelOneTitle = "#ui-id-3";
         public static string uiDialogLevelTwoTitle = "#ui-id-4";
