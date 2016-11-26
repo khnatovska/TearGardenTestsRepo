@@ -5,7 +5,9 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartSel", "StartSel\StartSel.csproj", "{01203838-75CE-4697-855A-5F984DEA8819}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TearGarden.Tests", "TearGarden.Tests\TearGarden.Tests.csproj", "{78B6E5DD-C30F-4487-8DA3-C6C792EB5EA8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TearGarden.UnitTests", "TearGarden.Tests\TearGarden.UnitTests.csproj", "{78B6E5DD-C30F-4487-8DA3-C6C792EB5EA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TearGarden.TestScenarios", "TearGarden.TestScenarios\TearGarden.TestScenarios.csproj", "{3A3764C6-6653-4ECF-8B4F-7506095FAC4E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{78B6E5DD-C30F-4487-8DA3-C6C792EB5EA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78B6E5DD-C30F-4487-8DA3-C6C792EB5EA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78B6E5DD-C30F-4487-8DA3-C6C792EB5EA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A3764C6-6653-4ECF-8B4F-7506095FAC4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A3764C6-6653-4ECF-8B4F-7506095FAC4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A3764C6-6653-4ECF-8B4F-7506095FAC4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A3764C6-6653-4ECF-8B4F-7506095FAC4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

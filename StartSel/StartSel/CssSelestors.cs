@@ -20,12 +20,12 @@ namespace StartSel
         public static string addNewRepositoryDialogStorageLocationsTable = "#fileSpecificationsGrid";
         public static string addNewRepositoryDialogStorageLocationsTableRowOne = "#fileSpecificationsGrid tr.ui-widget-content";
         public static string addNewRepositoryDialogStorageLocationsTableRowTwo = "#fileSpecificationsGrid tr.ui-widget-content:nth-child(3)";
-        public static string addNewRepositoryDialogStorageLocationsTableDataPathCell_part =
-            "td[aria-describedby=\"fileSpecificationsGrid_DataPath\"]";
-        public static string addNewRepositoryDialogStorageLocationsTableMetadataPathCell_part =
-            "td[aria-describedby=\"fileSpecificationsGrid_MetadataPath\"]";
-        public static string addNewRepositoryDialogStorageLocationsTableSizeCell_part =
-            "td[aria-describedby=\"fileSpecificationsGrid_SizeString\"]";
+        public static string addNewRepositoryDialogStorageLocationsTableDataPathCell_relative =
+            "td[aria-describedby='fileSpecificationsGrid_DataPath']";
+        public static string addNewRepositoryDialogStorageLocationsTableMetadataPathCell_relative =
+            "td[aria-describedby='fileSpecificationsGrid_MetadataPath']";
+        public static string addNewRepositoryDialogStorageLocationsTableSizeCell_relative =
+            "td[aria-describedby='fileSpecificationsGrid_SizeString']";
         public static string addStorageLocationDialogSaveBtn = "#editFileSpecOK";
         public static string addStorageLocationDialogCancelBtn = "#editFileSpecCancel";
         public static string addStorageLocationDialogLocalPathRadio = "#addOnlocalDisk";
@@ -58,6 +58,7 @@ namespace StartSel
 
         public static string uiDialogMessageBoxHeader = "#msgbox-message-header";
         public static string uiDialogMessageBoxMessage = "#msgbox-message";
+        public static string uiDialogMessageBoxMessageParagraph = "#msgbox-message > p";
         public static string uiDialogMessageBoxDefaultBtn = "#dialog div.messageboxButtonsContainer button.default";
     }
 }

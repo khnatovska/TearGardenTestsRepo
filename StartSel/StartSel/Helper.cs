@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
@@ -47,6 +48,33 @@ namespace StartSel
         public static string IntoDynamicSelector(this string id, string selector) //DOES NOT WORK PROPERLY - SHUT ITT DOWN
         {
             return "#" + id + " " + selector;
+        }
+
+        public static void AvoidInvalidSelector(this IWebDriver driver, string selector, int timeoutSecs = 10)
+        {
+            for (var i = 0; i < timeoutSecs; i++)
+            {
+                try
+                {
+                    IWebElement element = driver.FindElement(By.CssSelector(selector));
+                    return;
+                }
+                catch (InvalidSelectorException)
+                {
+                    //var el =
+                    //    driver.FindElement(By.CssSelector("#fileSpecificationsGrid tr.ui-widget-content > td:nth-child(2)"));
+                    //Console.WriteLine("invalid exception caught: " + el.GetAttribute("aria-describedby"));
+                }
+                Thread.Sleep(500);
+            }
+        }
+
+        public static void TypeIn(this IWebElement element, string text)
+        {
+            foreach (var character in text)
+            {
+                element.SendKeys(character.ToString());
+            }
         }
     }
 }
