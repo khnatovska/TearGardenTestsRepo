@@ -26,6 +26,14 @@ namespace StartSel
             "td[aria-describedby='fileSpecificationsGrid_MetadataPath']";
         public static string addNewRepositoryDialogStorageLocationsTableSizeCell_relative =
             "td[aria-describedby='fileSpecificationsGrid_SizeString']";
+        public static string addNewRepositoryDialogStorageLocationsTableActions_relative =
+           "td[aria-describedby='fileSpecificationsGrid_actions'] button";
+        public static string addNewRepositoryDialogStorageLocationsTableActionsDelete_relative =
+            "td[aria-describedby='fileSpecificationsGrid_actions'] ul > li:nth-child(2) > a";
+        public static string addNewRepositoryDialogStorageLocationsTableActionsEdit_relative =
+            "td[aria-describedby='fileSpecificationsGrid_actions'] ul > li:nth-child(1) > a";
+        public static string AddNewRepositoryDialogStorageLocationsTableNoData =
+            "#gview_fileSpecificationsGrid div.no-data-to-display";
         public static string addStorageLocationDialogSaveBtn = "#editFileSpecOK";
         public static string addStorageLocationDialogCancelBtn = "#editFileSpecCancel";
         public static string addStorageLocationDialogLocalPathRadio = "#addOnlocalDisk";

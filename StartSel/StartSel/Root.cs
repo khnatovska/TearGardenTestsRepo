@@ -67,9 +67,9 @@ namespace StartSel
             return new ChromeDriver();
         }
 
-        public static WebDriverWait SetUptWebDriverWait(IWebDriver webdriver)
+        public static WebDriverWait SetUptWebDriverWait(IWebDriver webdriver, int timeout = 10)
         {
-            return new WebDriverWait(webdriver, TimeSpan.FromSeconds(10));
+            return new WebDriverWait(webdriver, TimeSpan.FromSeconds(timeout));
         }
 
         public static void NavigateToRepositoriesPage(IWebDriver webdriver)
