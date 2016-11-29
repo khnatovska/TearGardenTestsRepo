@@ -117,7 +117,7 @@ namespace TearGarden.TestScenarios
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUsername)).Click();
             driver.WaitForAjax();
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUsername)).TypeIn(username);
-            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUNCPath)).Click();
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogPassword)).Click();
             driver.WaitForAjax();
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogPassword)).TypeIn(password);
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize)).Clear();
@@ -247,7 +247,7 @@ namespace TearGarden.TestScenarios
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUsername)).Click();
             driver.WaitForAjax();
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUsername)).TypeIn(username);
-            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUNCPath)).Click();
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogPassword)).Click();
             driver.WaitForAjax();
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogPassword)).TypeIn(password);
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize)).Clear();
@@ -278,7 +278,7 @@ namespace TearGarden.TestScenarios
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUsername)).Click();
             driver.WaitForAjax();
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUsername)).TypeIn(username2);
-            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUNCPath)).Click();
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogPassword)).Click();
             driver.WaitForAjax();
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogPassword)).TypeIn(password2);
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize)).Clear();
@@ -412,7 +412,7 @@ namespace TearGarden.TestScenarios
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUsername)).Click();
             driver.WaitForAjax();
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUsername)).TypeIn(username);
-            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUNCPath)).Click();
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogPassword)).Click();
             driver.WaitForAjax();
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogPassword)).TypeIn(password);
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize)).Clear();
@@ -459,7 +459,7 @@ namespace TearGarden.TestScenarios
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUsername)).Click();
             driver.WaitForAjax();
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUsername)).TypeIn(username);
-            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUNCPath)).Click();
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogPassword)).Click();
             driver.WaitForAjax();
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogPassword)).TypeIn(password);
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSaveBtn)).Click();
@@ -500,7 +500,7 @@ namespace TearGarden.TestScenarios
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUsername)).Click();
             driver.WaitForAjax();
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUsername)).TypeIn(username);
-            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUNCPath)).Click();
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogPassword)).Click();
             driver.WaitForAjax();
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogPassword)).TypeIn(password);
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSaveBtn)).Click();
@@ -680,7 +680,7 @@ namespace TearGarden.TestScenarios
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUsername)).Click();
             driver.WaitForAjax();
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUsername)).TypeIn(username);
-            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUNCPath)).Click();
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogPassword)).Click();
             driver.WaitForAjax();
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogPassword)).TypeIn(password);
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize)).Clear();
@@ -711,7 +711,7 @@ namespace TearGarden.TestScenarios
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUsername)).Click();
             driver.WaitForAjax();
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUsername)).TypeIn(username2);
-            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUNCPath)).Click();
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogPassword)).Click();
             driver.WaitForAjax();
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogPassword)).TypeIn(password2);
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize)).Clear();
@@ -787,7 +787,7 @@ namespace TearGarden.TestScenarios
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUsername)).Click();
             driver.WaitForAjax();
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUsername)).TypeIn(username);
-            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUNCPath)).Click();
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogPassword)).Click();
             driver.WaitForAjax();
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogPassword)).TypeIn(password);
             driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize)).Clear();
@@ -919,12 +919,88 @@ namespace TearGarden.TestScenarios
             Assert.AreEqual(storageLocationRow.FindElement(By.CssSelector(CssSelestors.addNewRepositoryDialogStorageLocationsTableSizeCell_relative)).Text, newsize + " GB");
         }
 
-        public void EditNetworkStorageLocationNewRepo()
+        [TestCase("\\\\10.35.178.196\\sharedrepo", "administrator", "123asdQ", "20", "\\\\10.35.178.196\\sharedrepo2", "21")]
+        [TestCase("\\\\10.35.178.196\\sharedrepo", "administrator", "123asdQ", "4", "\\\\10.35.178.196\\sharedrepo2", "3")]
+        [TestCase("\\\\10.35.178.196\\sharedrepo2", "administrator", "123asdQ", "220", "\\\\10.35.178.196\\sharedrepo", "21")]
+        [TestCase("\\\\10.35.178.196\\sharedrepo2", "administrator", "123asdQ", "134", "\\\\10.35.178.196\\sharedrepo", "13")]
+        public void EditNetworkStorageLocationNewRepo(string networkpath, string username, string password, string size,
+            string newnetworkpath, string newsize)
         {
-            
+            //open addStorageLocationDialog
+            Assert.AreEqual(driver.FindElement(By.CssSelector(CssSelestors.addNewRepositoryBtnText)).Text,
+                "Add New DVM Repository");
+            driver.FindElement(By.CssSelector(CssSelestors.addNewRepositoryBtn)).Click();
+            IWebElement uiDialogLevelOneTitle =
+                wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(CssSelestors.uiDialogLevelOneTitle)));
+            Assert.AreEqual(uiDialogLevelOneTitle.Text, "Add New Repository");
+            IWebElement addStorageLocationBtn =
+                driver.FindElement(By.CssSelector(CssSelestors.addNewRepositoryDialogAddStorageLocationBtn));
+            Assert.AreEqual(addStorageLocationBtn.Text, "Add Storage Location");
+            addStorageLocationBtn.Click();
+            IWebElement addStorageLocationDialogTitle =
+                wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(CssSelestors.uiDialogLevelTwoTitle)));
+            Assert.AreEqual(addStorageLocationDialogTitle.Text, "Add Storage Location");
+
+            IWebElement sharedPathRadio = driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSharedPathRadio));
+            sharedPathRadio.Click();
+            Assert.AreEqual(sharedPathRadio.GetAttribute("checked"), "true");
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUNCPath)).Click();
+            driver.WaitForAjax();
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUNCPath)).TypeIn(networkpath);
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUsername)).Click();
+            driver.WaitForAjax();
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUsername)).TypeIn(username);
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogPassword)).Click();
+            driver.WaitForAjax();
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogPassword)).TypeIn(password);
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize)).Clear();
+            driver.WaitForAjax();
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize)).TypeIn(size);
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize)).SendKeys(Keys.Tab);
+            wait.Until(
+                ExpectedConditions.TextToBePresentInElementValue(
+                    By.CssSelector(CssSelestors.addStorageLocationDialogSize), size + ".00"));
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSaveBtn)).Click();
+            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.CssSelector(CssSelestors.uiDialogLevelTwoTitle)));
+            driver.WaitForAjax();
+            IWebElement storageLocationRow = wait.Until(
+                ExpectedConditions.ElementExists(
+                    By.CssSelector(CssSelestors.addNewRepositoryDialogStorageLocationsTableRowOne)));
+            storageLocationRow.FindElement(By.CssSelector(CssSelestors.addNewRepositoryDialogStorageLocationsTableActions_relative)).Click();
+            driver.WaitForAjax();
+            Assert.AreEqual(storageLocationRow.FindElement(By.CssSelector(CssSelestors.addNewRepositoryDialogStorageLocationsTableActionsEdit_relative)).Text, "Edit");
+            storageLocationRow.FindElement(By.CssSelector(CssSelestors.addNewRepositoryDialogStorageLocationsTableActionsEdit_relative)).Click();
+            addStorageLocationDialogTitle = wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(CssSelestors.uiDialogLevelTwoTitle)));
+            Assert.AreEqual(addStorageLocationDialogTitle.Text, "Edit Storage Location");
+            Assert.AreEqual(driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSharedPathRadio)).GetAttribute("checked"), "true");
+            Assert.AreEqual(driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUNCPath)).GetAttribute("value"), networkpath);
+            Assert.AreEqual(driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUsername)).GetAttribute("value"), username);
+            Assert.AreEqual(driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize)).GetAttribute("value"), size + ".00");
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUNCPath)).Clear();
+            driver.WaitForAjax();
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogUNCPath)).TypeIn(newnetworkpath);
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogPassword)).Click();
+            driver.WaitForAjax();
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogPassword)).TypeIn(password);
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize)).Clear();
+            driver.WaitForAjax();
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize)).TypeIn(newsize);
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSize)).SendKeys(Keys.Tab);
+            wait.Until(
+                ExpectedConditions.TextToBePresentInElementValue(
+                    By.CssSelector(CssSelestors.addStorageLocationDialogSize), newsize + ".00"));
+            driver.FindElement(By.CssSelector(CssSelestors.addStorageLocationDialogSaveBtn)).Click();
+            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.CssSelector(CssSelestors.uiDialogLevelTwoTitle)));
+            driver.WaitForAjax();
+            storageLocationRow = wait.Until(
+                ExpectedConditions.ElementExists(
+                    By.CssSelector(CssSelestors.addNewRepositoryDialogStorageLocationsTableRowOne)));
+            Assert.AreEqual(storageLocationRow.FindElement(By.CssSelector(CssSelestors.addNewRepositoryDialogStorageLocationsTableDataPathCell_relative)).Text, newnetworkpath);
+            Assert.AreEqual(storageLocationRow.FindElement(By.CssSelector(CssSelestors.addNewRepositoryDialogStorageLocationsTableMetadataPathCell_relative)).Text, newnetworkpath);
+            Assert.AreEqual(storageLocationRow.FindElement(By.CssSelector(CssSelestors.addNewRepositoryDialogStorageLocationsTableSizeCell_relative)).Text, newsize + " GB");
         }
 
-        
+
     }
 
     public class RepositoryPageExistingRepo
