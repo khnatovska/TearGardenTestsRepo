@@ -10,6 +10,6 @@ namespace Surfer
     {
         //general selectors
         public static string DropdownListItemSelector = "//ul/li/label";
-        public static string DropdownMenuItemSelector = "//ul/li/a";
+        public static string DropdownMenuItemSelector = "//div/ul/li/a";
     }
 }

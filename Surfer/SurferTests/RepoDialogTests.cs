@@ -165,14 +165,14 @@ namespace SurferTests
             var storageLocationRow = repoDialog.GetStorageLocationTableRow(1);
             var actions = storageLocationRow.GetActionsDropdown();
             actions.Open();
-            storageLocationDialog = actions.ClickEdit(); //THIS IS EXTREMELY SLOOOOW, WHY?
+            storageLocationDialog = actions.ClickEdit(); 
             storageLocationDialog.VerifyTitle();
             datapathField = storageLocationDialog.GetLocalDataPathInputField();
             metadatapathField = storageLocationDialog.GetLocalMetadataPathInputField();
             sizeField = storageLocationDialog.GetSizeInputField();
             datapathField.InputEquals(datapath);
             metadatapathField.InputEquals(metadatapath);
-            sizeField.InputEquals(size+".00");  //AWKWARD!!!!
+            sizeField.InputEqualsWithTwoDecimalPoints(size); 
             datapathField.TypeIn(newdatapath);
             sizeField.TypeIn(newsize);
             storageLocationDialog.Save();
@@ -206,7 +206,7 @@ namespace SurferTests
             var storageLocationRow = repoDialog.GetStorageLocationTableRow(1);
             var actions = storageLocationRow.GetActionsDropdown();
             actions.Open();
-            storageLocationDialog = actions.ClickEdit(); //THIS IS EXTREMELY SLOOOOW, WHY?
+            storageLocationDialog = actions.ClickEdit(); 
             storageLocationDialog.VerifyTitle();
             storageLocationDialog.NetworkPathRadioIsSelected();
             networkpathField = storageLocationDialog.GetUncPathInputField();
@@ -215,7 +215,7 @@ namespace SurferTests
             sizeField = storageLocationDialog.GetSizeInputField();
             networkpathField.InputEquals(networkpath);
             usernameField.InputEquals(username);
-            sizeField.InputEquals(size + ".00"); //AWKWARD
+            sizeField.InputEqualsWithTwoDecimalPoints(size);
             networkpathField.TypeIn(newnetworkpath);
             passwordField.TypeIn(password);
             sizeField.TypeIn(newsize);

@@ -72,7 +72,6 @@
   <ItemGroup>
     <Compile Include="CssSelectors.cs" />
     <Compile Include="Helper.cs" />
-    <Compile Include="PageObjects\Dropdown.cs" />
     <Compile Include="PageObjects\DropdownList.cs" />
     <Compile Include="PageObjects\DropdownMenu.cs" />
     <Compile Include="PageObjects\ErrorMessageBox.cs" />

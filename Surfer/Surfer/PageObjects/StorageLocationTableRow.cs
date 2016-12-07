@@ -21,9 +21,9 @@ namespace Surfer.PageObjects
             DataPath = CssSelectors.RepoDialogStorageLocationsTableDataPathCell;
             MetadataPath = CssSelectors.RepoDialogStorageLocationsTableMetadataPathCell;
             Size = CssSelectors.RepoDialogStorageLocationsTableSizeCell;
-            Actions = CssSelectors.RepoDialogStorageLocationsTableActions;
+            Actions = CssSelectors.RepoDialogStorageLocationsTableActionsCell;
         }
-
+        
         public void DataPathEquals(string expectedPath)
         {
             var row = Table.FindByCss(Row);
@@ -47,10 +47,8 @@ namespace Surfer.PageObjects
         
         public DropdownMenu GetActionsDropdown()
         {
-            var buttonGoupInRow = Row + " " + CssSelectors.RepoDialogStorageLocationsTableActionsBtnGroup;
-            var buttonInRow = Row + " " + Actions;
-            var dropdownInRow = Row + " " + CssSelectors.RepoDialogStorageLocationsTableActionsDropdown;
-            return new DropdownMenu(Driver, buttonGoupInRow, buttonInRow, dropdownInRow);
+            Driver.WaitForAjax();
+            return new DropdownMenu(Driver, Row);
         }
     }
 }

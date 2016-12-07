@@ -25,12 +25,12 @@ namespace Surfer
             "td[aria-describedby='fileSpecificationsGrid_MetadataPath']";
         public static string RepoDialogStorageLocationsTableSizeCell =
             "td[aria-describedby='fileSpecificationsGrid_SizeString']";
-        public static string RepoDialogStorageLocationsTableActions =
+        public static string RepoDialogStorageLocationsTableActionsCell =
+           "td[aria-describedby='fileSpecificationsGrid_actions']";
+        public static string RepoDialogStorageLocationsTableActionsBtn =
            "td[aria-describedby='fileSpecificationsGrid_actions'] button";
-        public static string RepoDialogStorageLocationsTableActionsBtnGroup =
-           "td[aria-describedby='fileSpecificationsGrid_actions'] > div";
         public static string RepoDialogStorageLocationsTableActionsDropdown =
-           "td[aria-describedby='fileSpecificationsGrid_actions'] ul.dropdown-menu";
+           "td[aria-describedby='fileSpecificationsGrid_actions'] ul";
         public static string RepoDialogStorageLocationsTableNoData =
             "#gview_fileSpecificationsGrid div.no-data-to-display";
         public static string RepoDialogCreateBtn = "#createRepoButton";
@@ -77,17 +77,12 @@ namespace Surfer
         public static string uiDialogMessageBoxMessageParagraph = "#msgbox-message > p";
         public static string uiDialogMessageBoxDefaultBtn = "#dialog div.messageboxButtonsContainer button.default";
 
-        
-        
-        //public static string addNewRepositoryDialogStorageLocationsTableRowTwo = "#fileSpecificationsGrid tr.ui-widget-content:nth-child(3)";
-       
-        
-        //public static string addNewRepositoryDialogStorageLocationsTableActionsDelete_relative =
-        //    "td[aria-describedby='fileSpecificationsGrid_actions'] ul > li:nth-child(2) > a";
-        //public static string addNewRepositoryDialogStorageLocationsTableActionsEdit_relative =
-        //    "td[aria-describedby='fileSpecificationsGrid_actions'] ul > li:nth-child(1) > a";
-        //public static string AddNewRepositoryDialogStorageLocationsTableNoData =
-        //    "#gview_fileSpecificationsGrid div.no-data-to-display";
+
+        //relative selectors for DropdownMenu
+        public static string DropdownMenuOptions = "div > ul > li > a";
+        public static string DropdownMenuBtn = "button";
+        public static string DropdownMenuDropdown = "ul.dropdown-menu";
+
 
 
         public static string GetChild(string selector, int number)

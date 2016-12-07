@@ -28,6 +28,12 @@ namespace Surfer.PageObjects
             Assert.AreEqual(expectedInput, input.GetAttribute("value"));
         }
 
+        public void InputEqualsWithTwoDecimalPoints(string expectedInput)
+        {
+            var input = Driver.FindByCss(Input);
+            Assert.AreEqual(expectedInput + ".00", input.GetAttribute("value"));
+        }
+
         public void InputValidationError()
         {
             Driver.WaitForAjax();
