@@ -71,7 +71,10 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CssSelectors.cs" />
+    <Compile Include="Enums\StorageLocationsType.cs" />
     <Compile Include="Helper.cs" />
+    <Compile Include="Models\RepoModel.cs" />
+    <Compile Include="Models\StorageLocationModel.cs" />
     <Compile Include="PageObjects\DropdownList.cs" />
     <Compile Include="PageObjects\DropdownMenu.cs" />
     <Compile Include="PageObjects\ErrorMessageBox.cs" />
@@ -80,6 +83,7 @@
     <Compile Include="PageObjects\MessageBox.cs" />
     <Compile Include="PageObjects\RepoDialog.cs" />
     <Compile Include="PageObjects\RepoPage.cs" />
+    <Compile Include="PageObjects\RepoTableRow.cs" />
     <Compile Include="PageObjects\SpinnerInputField.cs" />
     <Compile Include="PageObjects\StorageLocationDialog.cs" />
     <Compile Include="PageObjects\StorageLocationTableRow.cs" />

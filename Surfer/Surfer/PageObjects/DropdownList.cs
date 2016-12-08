@@ -41,6 +41,11 @@ namespace Surfer.PageObjects
             Assert.AreEqual(expectedValue, value.Text);
         }
 
+        public string GetValue()
+        {
+            return Driver.FindByCss(ValueSelector).Text;
+        }
+
         public void Contains(string item)
         {
             var contains = false;

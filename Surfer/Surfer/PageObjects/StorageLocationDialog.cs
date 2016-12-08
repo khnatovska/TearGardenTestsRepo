@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using Surfer.Models;
 
 namespace Surfer.PageObjects
 {
@@ -32,9 +33,11 @@ namespace Surfer.PageObjects
             Assert.AreEqual(Title, title.Text);
         }
 
-        public void Save()
+        public StorageLocationModel Save()
         {
+            var model = PrepareModel();
             Driver.FindByCssClickable(CssSelectors.StorageLocationDialogSaveBtn).Click();
+            return model;
         }
 
         public void Close()
@@ -130,6 +133,21 @@ namespace Surfer.PageObjects
         {
             var errorBox = Driver.FindByCssVisible(CssSelectors.uiDialogMessageBox);
             return new ErrorMessageBox(Driver, errorBox);
+        }
+
+        private StorageLocationModel PrepareModel()
+        {
+            if (Driver.FindByCss(CssSelectors.StorageLocationDialogLocalPathRadio).Selected)
+            {
+                return new StorageLocationModel(GetLocalDataPathInputField().GetInput(),
+                    GetLocalMetadataPathInputField().GetInput(),
+                    GetSizeInputField().GetInput(), GetSizeUnitDropdown().GetValue());
+            }
+            else
+            {
+                return new StorageLocationModel(GetUncPathInputField().GetInput(), GetUsernameInputField().GetInput(),
+                    GetSizeInputField().GetInput(), GetSizeUnitDropdown().GetValue());
+            }
         }
     }
 }

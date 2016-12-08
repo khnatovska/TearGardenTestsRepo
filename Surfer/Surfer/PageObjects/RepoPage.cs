@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace Surfer.PageObjects
 {
@@ -12,6 +13,7 @@ namespace Surfer.PageObjects
     {
         public Root Root { get; }
         public IWebDriver Driver { get; set; }
+        public WebDriverWait Wait { get; set; }
         public string AddRepoBtnName { get; } = "Add New DVM Repository";
         public string URL { get; } = "Repository";
 
@@ -19,6 +21,7 @@ namespace Surfer.PageObjects
         {
             Root = new Root();
             Driver = Root.StartBrowser("Chrome");
+            Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
             Root.OpenCoreAdmin();
             Root.NavigateFromBase(URL);
         }
@@ -46,6 +49,22 @@ namespace Surfer.PageObjects
             repoBtn.Click();
             var repoDialog = Driver.FindByCssVisible(CssSelectors.uiDialogLevelOne);
             return new RepoDialog(repoDialog, Driver);
+        }
+
+        public RepoDialog VerifyRepoDialogDisappearance()
+        {
+            Wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.CssSelector(CssSelectors.uiDialogLevelOne)));
+            return null;
+        }
+
+        public RepoTableRow GetRepoTableRow(int rowNumber)
+        {
+            //currently works with rownumber only for the single repo in the list
+            var rowSelector = CssSelectors.GetChild(CssSelectors.RepoTableRow, rowNumber + 1);
+            Driver.WaitForAjax();
+            Wait.Until(ExpectedConditions.ElementExists(By.CssSelector(rowSelector)));
+            var table = Driver.FindByCss(CssSelectors.RepoTable);
+            return new RepoTableRow(Driver, table, rowSelector);
         }
     }
 }

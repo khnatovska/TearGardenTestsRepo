@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
+using Surfer.Enums;
+using Surfer.Models;
 
 namespace Surfer.PageObjects
 {
@@ -49,6 +51,47 @@ namespace Surfer.PageObjects
         {
             Driver.WaitForAjax();
             return new DropdownMenu(Driver, Row);
+        }
+
+        public string GetDataPath()
+        {
+            var row = Table.FindByCss(Row);
+            return row.FindByCss(DataPath).Text;
+        }
+
+        public string GetMetadataPath()
+        {
+            var row = Table.FindByCss(Row);
+            return row.FindByCss(MetadataPath).Text;
+        }
+
+        public string GetSize()
+        {
+            var row = Table.FindByCss(Row);
+            var size = row.FindByCss(Size).Text;
+            return size.Split(' ')[0];
+        }
+
+        public string GetSizeUnit()
+        {
+            var row = Table.FindByCss(Row);
+            var size = row.FindByCss(Size).Text;
+            return size.Split(' ')[1];
+        }
+
+        public StorageLocationsType GetStorageLocationType()
+        {
+            var datapath = GetDataPath();
+            if (datapath.StartsWith("\\"))
+            {
+                return StorageLocationsType.Network;
+            }
+            return StorageLocationsType.Local;
+        }
+
+        public StorageLocationModel PrepareStorageLocationModel()
+        {
+            return new StorageLocationModel(GetDataPath(), GetMetadataPath(), GetSize(), GetSizeUnit(), GetStorageLocationType());
         }
     }
 }

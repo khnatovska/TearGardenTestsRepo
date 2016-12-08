@@ -142,7 +142,7 @@ namespace SurferTests
             var storageLocationRow = repoDialog.GetStorageLocationTableRow(1);
             var actions = storageLocationRow.GetActionsDropdown();
             actions.Open();
-            actions.ClickDelete(); //THIS IS EXTREMELY SLOOOOW, WHY?
+            actions.ClickDelete(); 
             repoDialog.VerifyStorageLocationsConfigurationNoDataToDisplay();
         }
 

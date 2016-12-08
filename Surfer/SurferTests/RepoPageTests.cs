@@ -8,6 +8,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
+using Surfer.Models;
 using Surfer.PageObjects;
 
 namespace SurferTests
@@ -17,7 +18,8 @@ namespace SurferTests
     {
         private RepoPage repoPage;
         private RepoDialog repoDialog;
-
+        private StorageLocationDialog storageLocationDialog;
+        
         [SetUp]
         public void RepoPageSetupMethod()
         {
@@ -28,6 +30,23 @@ namespace SurferTests
         public void MainRepositoryIsDVM()
         {
             repoPage.VerifyDefaultRepoBtn();
+        }
+
+        [TestCase("K:\\repo")]
+        public void CreateLocalRepositorySingleStorageLocationDefault(string datapath)
+        {
+            repoDialog = repoPage.ClickAddNewRepoBtn();
+            storageLocationDialog = repoDialog.ClickAddNewStorageLocationBtn();
+            var datapathField = storageLocationDialog.GetLocalDataPathInputField();
+            var metadatapathField = storageLocationDialog.GetLocalMetadataPathInputField();
+            datapathField.TypeIn(datapath);
+            metadatapathField.TypeIn(datapath);
+            storageLocationDialog.Save();
+            storageLocationDialog = repoDialog.VerifyStorageDialogDisappearance();
+            var repoModel = repoDialog.Create();
+            repoDialog = repoPage.VerifyRepoDialogDisappearance();
+
+            //get reporow, check elements agains repomodel
         }
 
         [TearDown]

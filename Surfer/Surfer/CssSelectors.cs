@@ -10,12 +10,19 @@ namespace Surfer
     {
         //Repo page selectors
         public static string NewRepoBtn = "#newMainRepository > span";
+        public static string RepoTable = "#dvmRepositoriesGrid";
+        public static string RepoTableRow = "#dvmRepositoriesGrid tr";
+        public static string RepoTableTreeExpanderCell = "td[aria-describedby='dvmRepositoriesGrid_Icon'] div.tree-wrap";
+        public static string RepoTableNameCell = "td[aria-describedby='dvmRepositoriesGrid_Name'] span";
+        public static string RepoTableActionsCell = "td[aria-describedby='dvmRepositoriesGrid_actions']";
 
         //Repo dialog selectors
         public static string RepoDialogRepoNameLabel = "label.control-label[for=\"Name\"";
         public static string RepoDialogRepoName = "#RepoName";
         public static string RepoDialogConcurOperationsLabel = "label.control-label[for=\"MaxConcurrentOperations\"";
         public static string RepoDialogConcurOperations = "#MaximumConcurrentOperations";
+        public static string RepoDialogCommentsLabel = "label.control-label[for=\"Comment\"";
+        public static string RepoDialogComments = "#RepoComments";
         public static string RepoDialogAddStorageLocationBtn = "#popup1 div.popup-inner-content nav.navbar-actions span";
         public static string RepoDialogStorageLocationsTable = "#fileSpecificationsGrid";
         public static string RepoDialogStorageLocationsTableRow = "#fileSpecificationsGrid tr";
@@ -83,7 +90,7 @@ namespace Surfer
         public static string DropdownMenuBtn = "button";
         public static string DropdownMenuDropdown = "ul.dropdown-menu";
 
-
+        
 
         public static string GetChild(string selector, int number)
         {
@@ -92,16 +99,5 @@ namespace Surfer
         }
         
         
-        
-        
-        
-
-        //public static string uiDialogLevelOneTitle = "#ui-id-3";
-        //public static string uiDialogLevelTwoTitle = "#ui-id-4";
-
-        //public static string uiDialogMessageBoxHeader = "#msgbox-message-header";
-        //public static string uiDialogMessageBoxMessage = "#msgbox-message";
-        //public static string uiDialogMessageBoxMessageParagraph = "#msgbox-message > p";
-        //public static string uiDialogMessageBoxDefaultBtn = "#dialog div.messageboxButtonsContainer button.default";
     }
 }

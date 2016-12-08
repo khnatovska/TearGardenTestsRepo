@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using Surfer.Models;
 
 namespace Surfer.PageObjects
 {
@@ -15,9 +17,6 @@ namespace Surfer.PageObjects
         public IWebDriver Driver { get; }
         public WebDriverWait Wait { get; }
         public string Title { get; } = "Add New Repository";
-        public string Name { get; }
-        public string ConcurOperations { get; }
-        public string Comments { get; }
         public string StorageLocationBtn { get; } = "Add Storage Location";
 
         public RepoDialog(IWebElement dialog, IWebDriver driver)
@@ -47,9 +46,11 @@ namespace Surfer.PageObjects
             return new StorageLocationDialog(storageLocationDialog, Driver);
         }
 
-        public void Create()
+        public RepoModel Create()
         {
+            var model = PrepareModel();
             Driver.FindByCssClickable(CssSelectors.RepoDialogCreateBtn).Click();
+            return model;
         }
 
         public void Close()
@@ -80,6 +81,11 @@ namespace Surfer.PageObjects
             return new LabeledInputField(Driver, CssSelectors.RepoDialogConcurOperations, CssSelectors.RepoDialogConcurOperationsLabel);
         }
 
+        public LabeledInputField GetCommentsInputField()
+        {
+            return new LabeledInputField(Driver, CssSelectors.RepoDialogComments, CssSelectors.RepoDialogCommentsLabel);
+        }
+
         public StorageLocationTableRow GetStorageLocationTableRow(int rowNumber)
         {
             var rowSelector = CssSelectors.GetChild(CssSelectors.RepoDialogStorageLocationsTableRow, rowNumber + 1);
@@ -94,6 +100,19 @@ namespace Surfer.PageObjects
             Driver.WaitForAjax();
             Wait.Until(ExpectedConditions.ElementExists(By.CssSelector(CssSelectors.RepoDialogStorageLocationsTableNoData)));
             Assert.AreEqual("No data to display", Driver.FindByCss(CssSelectors.RepoDialogStorageLocationsTableNoData).Text);
+        }
+
+        private RepoModel PrepareModel()
+        {
+            var storageLocationsCount = Driver.FindElements(By.CssSelector(CssSelectors.RepoDialogStorageLocationsTableRow)).Count - 1;
+            var storageLocationsList = new List<StorageLocationModel>();
+            for (var i = 1; i <= storageLocationsCount; i++)
+            {
+                var row = GetStorageLocationTableRow(i);
+                storageLocationsList.Add(row.PrepareStorageLocationModel());
+            }
+            return new RepoModel(GetRepoNameInputField().GetInput(), GetConcurOperationsInputField().GetInput(),
+                GetCommentsInputField().GetInput(), storageLocationsCount, storageLocationsList);
         }
     }
 }
